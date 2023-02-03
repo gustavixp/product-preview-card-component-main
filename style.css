@@ -1,0 +1,182 @@
+:root {
+  --primary-color-400: hsl(158, 36%, 37%);
+  --primary-color-600: hsl(158, 36%, 18%);
+  --secondary-color-200: hsl(30, 38%, 92%);
+
+  --neutral-blue-900: hsl(212, 21%, 14%);
+  --neutral-blue-400: hsl(228, 12%, 48%);
+  --neutral-white-100: hsl(0, 0%, 100%);
+
+  --ff-accent: "Fraunces", serif;
+  --ff-base: "Montserrat", sans-serif;
+
+  --fw-regular: 500;
+  --fw-bold: 700;
+}
+
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/*
+    2. Remove default margin
+  */
+* {
+  margin: 0;
+}
+/*
+    3. Allow percentage-based heights in the application
+  */
+html,
+body {
+  height: 100%;
+}
+/*
+    Typographic tweaks!
+    4. Add accessible line-height
+    5. Improve text rendering
+  */
+body {
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+/*
+    6. Improve media defaults
+  */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+/*
+    7. Remove built-in form typography styles
+  */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+/*
+    8. Avoid text overflows
+  */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+h1 {
+  line-height: 1;
+}
+
+/* Global Style */
+body {
+  font-family: var(--ff-base);
+  font-weight: var(--fw-regular);
+  font-size: 0.8rem;
+  color: var(--neutral-blue-400);
+  background-color: var(--secondary-color-200);
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  margin: 1rem;
+}
+
+/* Product Style */
+.product {
+  --conetnt-padding: 1.5rem;
+  --conetnt-spacing: 1rem;
+
+  display: grid;
+  background-color: var(--neutral-white-100);
+  border-radius: 10px;
+  overflow: hidden;
+  max-width: 600px;
+}
+
+@media (min-width: 600px) {
+  .product {
+  --conetnt-padding: 2rem;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.product__content {
+  padding: var(--conetnt-padding);
+  display: grid;
+  gap: var(--conetnt-spacing);
+}
+
+.product__category {
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+
+.product__title {
+  font-size: 2rem;
+  font-family: var(--ff-accent);
+  color: var(--neutral-blue-900);
+}
+
+.product__price {
+  font-size: 2rem;
+  font-family: var(--ff-accent);
+  color: var(--primary-color-400);
+}
+
+.button {
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.75em 1.5em;
+  border: none;
+  background-color: var(--primary-color-400);
+  color: var(--neutral-white-100);
+  font-weight: var(--fw-bold);
+  font-size: 0.95rem;
+  border-radius: 10px;
+}
+
+.button[data-icon="shopping-cart"]::before {
+  content: "";
+  width: 15px;
+  height: 16px;
+  background-image: url(images/icon-cart.svg);
+}
+
+.button:is(:hover, :active) {
+  background-color: var(--primary-color-600);
+}
+
+/* Utilities */
+.flex-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.sr-only:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
